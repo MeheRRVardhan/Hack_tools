@@ -1,5 +1,5 @@
 # WELCOME TO FROG ARMY 
-We are going to start a community for FROGS!! GET READ
+We are going to start a community for FROGS!! GET READY TO HOP 🐸🐸🐸
 
            .--._.--.
           ( O     O )
