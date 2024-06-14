@@ -1,19 +1,12 @@
 # WELCOME TO FROG ARMY 
-We are going to start a community for FROGS!! GET READY
-'''
+We are going to start a community for FROGS!! GET READ
+
            .--._.--.
           ( O     O )
           /   . .   \
          .`._______.'.
         /(           )\
       _/  \  \   /  /  \_
-   .~   `  \  \ /  /  '   ~.
-  {    -.   \  V  /   .-    }
-_ _`.    \  |  |  |  /    .'_ _
->_       _} |  |  | {_       _<
- /. - ~ ,_-'  .^.  `-_, ~ - .\
-         '-'|/   \|`-`
-'''
 
 ## Network Tools and Automation
 This repository contains various network tools implemented in Python and automation scripts for these tools.
