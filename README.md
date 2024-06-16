@@ -16,3 +16,4 @@ This repository contains various network tools implemented in Python and automat
 - **Network Tools**: Python scripts for various network operations.
 - **Automation**: Scripts to automate network tool tasks.
 - **Community**: We're starting a community to share knowledge and collaborate 
+- **DEEP PACKET INSPECTION**: This repository focuses on making a DEEP-PACKET INSPECTION TOOL (BASH + PYTHON), here are a few basic codes that are combined to make this tool. 
