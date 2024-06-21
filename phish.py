@@ -1,9 +1,8 @@
+import re
+import json #converting dictionary -> string, here the final report is a dictionary, so to use regex properly, this need to convert into --> string
 import virustotal_python
 from base64 import urlsafe_b64encode
-from optparse import OptionParser
-import pprint
-# here pprint is a data-pretty printer, I used the print() function, which gave me lumps of data (not gibrish, but umm!! loads of dictionary data not so clear, so using pprint we can get the data more clear and 
-# kinda organised!!
+import argparse
 print(''' o
 o      ______/~/~/~/__           /((
   o  // __            ====__    /_((
@@ -14,27 +13,26 @@ o      ______/~/~/~/__           /((
                                  \((
 # CREDITS: ASCII_ART ARCHIEVE
 ''')
+# Parsing command line options
+parser = argparse.ArgumentParser(description="Check URL using VirusTotal API")
+parser.add_argument("-u", "--url", required=True, help="Enter the URL of the domain to check using VirusTotal module")
+args = parser.parse_args()
+url = args.url
 
-parser = OptionParser()
-parser.add_option("-u", "--url", dest="url", help="Enter the url of the domain to check using virus-total module")
-(options, args) = parser.parse_args()
-url = options.url
-
-with virustotal_python.Virustotal("<<get your virus_total_API>>") as vtotal:
+# Interacting with VirusTotal API
+with virustotal_python.Virustotal("1579c2e194f3e92a6670aaf26dd446bd7e2559d832d59057b233a72d09ad5b4b") as vtotal:
     try:
         resp = vtotal.request("urls", data={"url": url}, method="POST")
-        # Safe encode URL in base64 format
-        # https://developers.virustotal.com/reference/url
         url_id = urlsafe_b64encode(url.encode()).decode().strip("=")
         report = vtotal.request(f"urls/{url_id}")
-
-        # Print the type of the report object
-        print(report.object_type)
-
-        # Print the final data
         Final_data = report.data
-        pprint.pp(Final_data)
+        final_string_data = json.dumps(Final_data)
+        pattern = re.compile(r'(\Wmalicious\W\:)(\W\d)')
+        matches = pattern.finditer(final_string_data)
+        print("VIRUS-TOTAL REPORT")
+        for match in matches:
+            print(match.group(1), int(match.group(2)))
+            if int(match.group(2)) > 0:
+                print("THIS IS A PHISHING-EMAIL")
     except virustotal_python.VirustotalError as err:
         print(f"Failed to send URL: {url} for analysis and get the report: {err}")
-
-
