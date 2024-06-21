@@ -1,5 +1,5 @@
 import re
-import json #converting dictionary -> string, here the final report is a dictionary, so to use regex properly, this need to convert into --> string
+import json #converting dictionary -> string, here the final report is a dictionary, so to use regex properly, this needs to convert into --> string
 import virustotal_python
 from base64 import urlsafe_b64encode
 import argparse
@@ -20,7 +20,7 @@ args = parser.parse_args()
 url = args.url
 
 # Interacting with VirusTotal API
-with virustotal_python.Virustotal("1579c2e194f3e92a6670aaf26dd446bd7e2559d832d59057b233a72d09ad5b4b") as vtotal:
+with virustotal_python.Virustotal("<enter_your_virus_total API") as vtotal:
     try:
         resp = vtotal.request("urls", data={"url": url}, method="POST")
         url_id = urlsafe_b64encode(url.encode()).decode().strip("=")
