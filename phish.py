@@ -36,7 +36,7 @@ with virustotal_python.Virustotal("<<ENTER YOUR VIRUS_TOTAL_API>>") as vtotal:
         for match in matches:
             print(match.group(1), int(match.group(2)))
             if int(match.group(2)) > 0:
-                print("THIS IS A PHISHING-EMAIL")
+                print("THIS IS A PHISHING-URL")
     except virustotal_python.VirustotalError as err:
         print(f"Failed to send URL: {url} for analysis and get the report: {err}")
 
